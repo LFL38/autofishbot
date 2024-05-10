@@ -258,7 +258,7 @@ class ConfigManager:
                 raise GenericException(f'{field}: {e}')
         return 5
 
-    def to_float(self, value: any, field: str = None, bd: tuple = (2, 3.5)) -> float:
+    def to_float(self, value: any, field: str = None, bd: tuple = (2, 10)) -> float:
         '''Converts and evaluates string values to float.'''
         if value:
             try:
@@ -269,7 +269,7 @@ class ConfigManager:
             if self.compare(value, bd):
                 return float(value)
             else:
-                raise OutsideBoundariesError((2, 3.5), value, field)
+                raise OutsideBoundariesError((2, 10), value, field)
         else:
             if field == 'REFRESH_RATE':
                 return 0.3
